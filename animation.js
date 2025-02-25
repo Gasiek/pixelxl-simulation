@@ -6,7 +6,44 @@ const CENTER_Y = 7;
 const RADIUS = 5;
 const SHOULD_STAY_IN_BOUNDS = true;
 
-const MIN_STEP_COUNT = 8;
+
+const plotCircle = (cx, cy, r) => {
+  let x = r;
+  let y = 0;
+  let decision = 1 - r;
+  const points = [];
+
+  const addPoint = (px, py) => {
+    if (!points.some(([existingX, existingY]) => existingX === px && existingY === py)) {
+      points.push([px, py]);
+    }
+  };
+
+  while (x >= y) {
+    addPoint(cx + x, cy + y);
+    addPoint(cx - x, cy + y);
+    addPoint(cx + x, cy - y);
+    addPoint(cx - x, cy - y);
+    addPoint(cx + y, cy + x);
+    addPoint(cx - y, cy + x);
+    addPoint(cx + y, cy - x);
+    addPoint(cx - y, cy - x);
+
+    y++;
+    if (decision <= 0) {
+      decision += 2 * y + 1;
+    } else {
+      x--;
+      decision += 2 * (y - x) + 1;
+    }
+  }
+
+  return points.sort((a, b) => {
+    const angleA = Math.atan2(a[1] - cy, a[0] - cx);
+    const angleB = Math.atan2(b[1] - cy, b[0] - cx);
+    return angleA - angleB;
+  });
+};
 
 const startAnimation = (centerX = CENTER_X, centerY = CENTER_Y, newRadius = RADIUS, interval = DISPLAY_REFRESH_RATE) => {
   if (!isPointWithinMatrixBounds(centerX, centerY)) {
@@ -29,30 +66,28 @@ const startAnimation = (centerX = CENTER_X, centerY = CENTER_Y, newRadius = RADI
     return;
   }
 
-  const stepCount = Math.max(MIN_STEP_COUNT, Math.round(2 * Math.PI * radius));
-  const angleStep = (2 * Math.PI) / stepCount;
-  let angle = Math.random() * 2 * Math.PI;
+  const points = plotCircle(centerX, centerY, radius);
 
-  let prevX = null;
-  let prevY = null;
+  let currentIndex = 0;
 
   const updatePixel = () => {
-    if (prevX !== null && prevY !== null) {
+    if (currentIndex > 0) {
+      const [prevX, prevY] = points[currentIndex - 1];
       turnOff(prevX, prevY);
+    } else {
+      const [lastX, lastY] = points[points.length - 1];
+      turnOff(lastX, lastY);
     }
 
-    const newX = Math.round(centerX + radius * Math.cos(angle));
-    const newY = Math.round(centerY + radius * Math.sin(angle));
-
+    const [newX, newY] = points[currentIndex];
     turnOn(newX, newY);
 
-    prevY = newY;
-    prevX = newX;
-    angle = (angle + angleStep) % (2 * Math.PI);
+    currentIndex = (currentIndex + 1) % points.length;
   };
 
   setInterval(updatePixel, interval);
 };
+
 
 export {
   startAnimation

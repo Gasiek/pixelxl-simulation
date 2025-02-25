@@ -1,8 +1,8 @@
 # Interaktywny symulator maty PIXEL XL
 
-Ten projekt przedstawia prostą symulację maty PIXEL XL w środowisku Node.js. Symuluje matę o wymiarach 14x28, gdzie zapalony piksel jest symbolizowany przez `1` a zgaszony przez `0`.
+Ten projekt przedstawia prostą symulację maty PIXEL XL w środowisku Node.js. Symuluje matę o wymiarach 14x28, gdzie zapalony piksel jest symbolizowany przez `1` a zgaszony przez `0`. Symulacja przedstawia animowany piksel poruszający się po okręgu o danym promieniu i środku.
 
-Symulacja przedstawia animowany piksel poruszający się po okręgu o danym promieniu i środku.
+Algorytm użyty do generowania ścieżki piksela to zmodyfikowany Mid-Point Circle Drawing Algorithm, użyty w celu osiągnięcia idealnych i symetrycznych okręgów, w których każdy kolejny piksel zapala się co dany interwał, bez duplikatów.
 
 ## Spis treści
 1. [Sposób uruchomienia](#sposób-uruchomienia)
@@ -40,4 +40,4 @@ W pliku `animation.js` użytkownik może skonfigurować animację piksela porusz
 - `SHOULD_STAY_IN_BOUNDS` jeśli `true` to promień okręgu zostanie zmniejszony jeśli powodowałby, że któryś z pikseli do zapalenia znajdował się poza granicami maty. Jeśli `false`, program będzie ignorował piksele znajdujące się poza granicami maty.
 
 ### Czas pracy
-Na projekt przeznaczyłem około 1h 20min. Na to złożyo się napisanie wszystkich funkcjonalności, testowanie przypadków brzegowych oraz pisanie README.
+Na projekt przeznaczyłem około 1h 35min. Na to złożyo się napisanie wszystkich funkcjonalności, testowanie przypadków brzegowych, ulepszanie algorytmu oraz pisanie README.
