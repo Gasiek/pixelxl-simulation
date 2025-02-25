@@ -1,5 +1,5 @@
 import { DISPLAY_REFRESH_RATE } from './main.js';
-import { ROWS, COLS, turnOn, turnOff } from './mat.js';
+import { ROWS, COLS, turnOn, turnOff, isPointWithinMatrixBounds } from './mat.js';
 
 const CENTER_X = 14;
 const CENTER_Y = 7;
@@ -9,7 +9,7 @@ const SHOULD_STAY_IN_BOUNDS = true;
 const MIN_STEP_COUNT = 8;
 
 const startAnimation = (centerX = CENTER_X, centerY = CENTER_Y, newRadius = RADIUS, interval = DISPLAY_REFRESH_RATE) => {
-  if (centerX < 0 || centerX >= COLS || centerY < 0 || centerY >= ROWS) {
+  if (!isPointWithinMatrixBounds(centerX, centerY)) {
     console.error("Error: centerX and centerY must be within the matrix bounds.");
     return;
   }
@@ -33,23 +33,21 @@ const startAnimation = (centerX = CENTER_X, centerY = CENTER_Y, newRadius = RADI
   const angleStep = (2 * Math.PI) / stepCount;
   let angle = Math.random() * 2 * Math.PI;
 
-  let prevRow = null;
-  let prevCol = null;
+  let prevX = null;
+  let prevY = null;
 
   const updatePixel = () => {
-    if (prevRow !== null && prevCol !== null) {
-      turnOff(prevRow, prevCol);
+    if (prevX !== null && prevY !== null) {
+      turnOff(prevX, prevY);
     }
 
-    const newCol = Math.round(centerX + radius * Math.cos(angle));
-    const newRow = Math.round(centerY + radius * Math.sin(angle));
+    const newX = Math.round(centerX + radius * Math.cos(angle));
+    const newY = Math.round(centerY + radius * Math.sin(angle));
 
-    if (newRow >= 0 && newRow < ROWS && newCol >= 0 && newCol < COLS) {
-      turnOn(newRow, newCol);
-    }
+    turnOn(newX, newY);
 
-    prevRow = newRow;
-    prevCol = newCol;
+    prevY = newY;
+    prevX = newX;
     angle = (angle + angleStep) % (2 * Math.PI);
   };
 
