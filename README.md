@@ -37,3 +37,6 @@ W pliku `animation.js` użytkownik może skonfigurować animację piksela porusz
 - `CENTER_Y` współrzędna y środka okręgu
 - `RADIUS` promień okręgu
 - `SHOULD_STAY_IN_BOUNDS` jeśli `true` to promień okręgu zostanie zmniejszony jeśli powodowałby, że któryś z pikseli do zapalenia znajdował się poza granicami maty. Jeśli `false`, program będzie ignorował piksele znajdujące się poza granicami maty.
+
+### Czas pracy
+Na projekt przeznaczyłem około 1h 20min. Na to złożyo się napisanie wszystkich funkcjonalności, testowanie przypadków brzegowych oraz pisanie README.
