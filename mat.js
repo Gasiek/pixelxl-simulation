@@ -1,7 +1,7 @@
 const ROWS = 14;
 const COLS = 28;
 
-let mat = Array.from({ length: ROWS }, () => Array.from({ length: COLS }, () => 0));
+const mat = Array.from({ length: ROWS }, () => Array.from({ length: COLS }, () => 0));
 
 const turnOn = (row, col) => {
   if (row < 0 || row >= ROWS || col < 0 || col >= COLS) return;
@@ -20,7 +20,7 @@ const displayMat = () => {
   });
 }
 
-export default {
+export {
   ROWS,
   COLS,
   mat,
