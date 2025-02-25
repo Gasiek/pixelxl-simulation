@@ -8,6 +8,7 @@ Symulacja przedstawia animowany piksel poruszający się po okręgu o danym prom
 1. [Sposób uruchomienia](#sposób-uruchomienia)
 2. [Struktura projektu](#struktura-projektu)
 3. [Konfiguracja symulacji](#konfiguracja-symulacji)
+3. [Czas pracy](#czas-pracy)
 
 ## Sposób uruchomienia
 1. Upewnić się że Node.js (wersja 14 lub nowsza) jest zainstalowany na komputerze.
