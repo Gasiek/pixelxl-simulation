@@ -5,4 +5,5 @@ const DISPLAY_REFRESH_RATE = 500;
 
 
 startAnimation();
+startAnimation(5, 5, 3, 500);
 setInterval(displayMat, DISPLAY_REFRESH_RATE);

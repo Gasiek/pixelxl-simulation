@@ -1,3 +1,21 @@
 {
-  "type": "module"
+  "name": "pixelxl-simulation",
+  "version": "1.0.0",
+  "description": "Ten projekt przedstawia prostą symulację maty PIXEL XL w środowisku Node.js. Symuluje matę o wymiarach 14x28, gdzie zapalony piksel jest symbolizowany przez `1` a zgaszony przez `0`.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gasiek/pixelxl-simulation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gasiek/pixelxl-simulation/issues"
+  },
+  "homepage": "https://github.com/Gasiek/pixelxl-simulation#readme"
 }

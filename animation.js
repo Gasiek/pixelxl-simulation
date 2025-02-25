@@ -5,6 +5,7 @@ const CENTER_Y = 7;
 const RADIUS = 5;
 const SHOULD_STAY_IN_BOUNDS = true;
 
+const MIN_STEP_COUNT = 8;
 
 const startAnimation = (centerX = CENTER_X, centerY = CENTER_Y, newRadius = RADIUS, interval = 500) => {
   if (centerX < 0 || centerX >= COLS || centerY < 0 || centerY >= ROWS) {
@@ -27,7 +28,7 @@ const startAnimation = (centerX = CENTER_X, centerY = CENTER_Y, newRadius = RADI
     return;
   }
 
-  const stepCount = Math.max(8, Math.round(2 * Math.PI * radius));
+  const stepCount = Math.max(MIN_STEP_COUNT, Math.round(2 * Math.PI * radius));
   const angleStep = (2 * Math.PI) / stepCount;
   let angle = Math.random() * 2 * Math.PI;
 
