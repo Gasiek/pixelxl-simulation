@@ -1,5 +1,4 @@
-const ROWS = 14;
-const COLS = 28;
+import { ROWS, COLS } from './config.js';
 
 const mat = Array.from({ length: ROWS }, () => Array.from({ length: COLS }, () => 0));
 
@@ -27,8 +26,6 @@ const displayMat = () => {
 }
 
 export {
-  ROWS,
-  COLS,
   mat,
   turnOn,
   turnOff,

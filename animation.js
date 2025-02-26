@@ -1,10 +1,5 @@
-import { DISPLAY_REFRESH_RATE } from './main.js';
-import { ROWS, COLS, turnOn, turnOff, isPointWithinMatrixBounds } from './mat.js';
-
-const CENTER_X = 14;
-const CENTER_Y = 7;
-const RADIUS = 5;
-const SHOULD_STAY_IN_BOUNDS = true;
+import { turnOn, turnOff, isPointWithinMatrixBounds } from './mat.js';
+import { DISPLAY_REFRESH_RATE, ROWS, COLS, CENTER_X, CENTER_Y, RADIUS, SHOULD_STAY_IN_BOUNDS } from './config.js';
 
 
 const plotCircle = (cx, cy, r) => {
