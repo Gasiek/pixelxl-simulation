@@ -68,7 +68,7 @@ const startAnimation = (centerX = CENTER_X, centerY = CENTER_Y, newRadius = RADI
 
   const points = plotCircle(centerX, centerY, radius);
 
-  let currentIndex = 0;
+  let currentIndex = Math.floor(Math.random() * points.length);
 
   const updatePixel = () => {
     if (currentIndex > 0) {
